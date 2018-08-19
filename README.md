@@ -1,6 +1,6 @@
 # Anki helpers
 
-This is a rough group of scripts to make entering cards into Anki easier and faster by allowing you to create cards using your text editor of choice, and specify certain card attributes with text shortcuts.
+This is a rough group of scripts to make entering cards into [Anki](https://apps.ankiweb.net/) easier and faster by allowing you to create cards using your text editor of choice, and specify certain card attributes with text shortcuts.
 
 These scripts format cards into a .csv file (fields separated by semicolons) which can be imported into Anki. The applescript can then do most of the work of actually importing them them to Anki.
 
