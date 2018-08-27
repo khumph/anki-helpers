@@ -1,7 +1,4 @@
-IN_MD=input.md
-OUTPUT_CSVS=basic.csv and-reversed.csv overlapping.csv cloze.csv
-SOURCES="source"
-TAGS="tag1 tag2"
+include config.mk
 
 ## all          : Generate .csvs for import to Anki
 .PHONY : all
