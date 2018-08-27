@@ -27,7 +27,7 @@ input_file = args.inputfile.read()
 
 out = re.sub(r'\n+', '<br>', input_file)
 out = re.sub(r'\s*(<br>)*\s*;\s*(<br>)*\s*', ';', out)
-out = re.sub(r'(<br>)*-+(<br>)*',
+out = re.sub(r'(<br>)*---+(<br>)*',
                      ';{};{}\n'.format(args.sources, args.tags), out)
 
 out = out.splitlines()
@@ -35,8 +35,8 @@ out = out.splitlines()
 output_cards = [[], [], [], []]
 for line in out:
     if line[:2] not in ['b;', 'r;', 'c;', 'o;']:
-        print(line[:2])
-        raise Exception("Card types are not specified correctly")
+        print(line)
+        raise Exception("Card type in above line not specified correctly")
     elif line[0] == "b":
         output_cards[0].append(line[2:])
     elif line[0] == "r":
