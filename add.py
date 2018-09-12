@@ -9,19 +9,14 @@ parser = argparse.ArgumentParser(
     file into Anki using AnkiConnect.
     Expects a single letter field indicating note type ('b' for basic,
      'r' for basic (and reversed), 'c' for cloze, and 'o' for cloze (overlapping))
-    as the first field followed by front, back, and remarks fields, with each
-    field separated by a semicolon and the note ended with '---'.
-    """,
-    epilog="""
-    Also adds tags and sources (same for each note).
+    as the first field followed by front, back, remarks, sources, and tags 
+    fields, with each field separated by a semicolon and the note ended with '---'.
     """
 )
 parser.add_argument("inputfile",
                     help="Markdown file with notes to add to Anki",
                     type=argparse.FileType('r'),
                     default=sys.stdin)
-parser.add_argument("sources", help = "Text to fill the sources field")
-parser.add_argument("tags", help = "Tags (quoted and separated by spaces)")
 
 args = parser.parse_args()
 
@@ -29,8 +24,7 @@ input_file = args.inputfile.read()
 
 out = re.sub(r'\n+', '<br>', input_file)
 out = re.sub(r'\s*(<br>)*\s*;\s*(<br>)*\s*', ';', out)
-out = re.sub(r'(<br>)*---+(<br>)*',
-                     ';{};{}\n'.format(args.sources, args.tags), out)
+out = re.sub(r'(<br>)*---+(<br>)*', '\n', out)
 
 out = out.splitlines()
 

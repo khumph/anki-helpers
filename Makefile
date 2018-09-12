@@ -1,4 +1,4 @@
-include config.mk
+IN_MD=input.md
 
 ## add       : Add notes to anki using AnkiConnect
 .PHONY : add
