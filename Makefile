@@ -2,17 +2,12 @@ IN_MD=input.md
 
 ## add       : Add notes to anki using AnkiConnect
 .PHONY : add
-format : add.py $(IN_MD) 
-	python $^ $(SOURCES) $(TAGS)
+add : add.py $(IN_MD)
+	python3 $^ $(SOURCES) $(TAGS)
 
-## reformat     : Remove [latex] tags, convert [$] tags
-.PHONY : reformat
-reformat : reformat.py $(IN_MD)
-	python $< < $(IN_MD)
-
-## trash-in     : Trash input .md, create empty one
-.PHONY : trash-in 
-trash-in : 
+## trash     : Trash input .md, create empty one
+.PHONY : trash 
+trash : 
 	trash $(IN_MD)
 	touch $(IN_MD)
 
