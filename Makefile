@@ -11,7 +11,7 @@ trash :
 	trash $(IN_MD)
 	touch $(IN_MD)
 
-## help         : Show arguments and what they do
+## help      : Show arguments and what they do
 .PHONY : help
 help : Makefile
 	@sed -n 's/^##//p' $<
