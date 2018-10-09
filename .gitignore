@@ -1,4 +1,4 @@
 .*
 !.gitignore
-input.md
+*.md
 *.csv
