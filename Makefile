@@ -3,7 +3,7 @@ IN_MD=input.md
 ## add       : Add notes to anki using AnkiConnect
 .PHONY : add
 add : add.py $(IN_MD)
-	python3 $^ $(SOURCES) $(TAGS)
+	python3 $^
 
 ## trash     : Trash input .md, create empty one
 .PHONY : trash 
