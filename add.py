@@ -27,6 +27,7 @@ input_file = args.inputfile.read()
 out = re.sub(r'\n+', '<br>', input_file)
 out = re.sub(r'\s*(<br>)*\s*;\s*(<br>)*\s*', ';', out)
 out = re.sub(r'(<br>)*---+(<br>)*', '\n', out)
+out = re.sub(r'\\', '\\\\\\\\', out)
 
 out = out.splitlines()
 
@@ -52,9 +53,14 @@ for line in out:
 
     args = line.split(";")
 
+    print(line[:77], '...', sep='')
+
+    fields = ['type', 'front', 'back', 'remarks', 'sources', 'tags']
+
     if args[0] not in ['b', 'r', 'c', 'o']:
-        print(line)
         raise Exception("Card type in above line not specified correctly")
+    if len(args) != len(fields) and args[0] != 'c':
+        raise Exception("Incorrect number of fields in above line")
     elif args[0] == "b":
         args[0] = "Basic"
     elif args[0] == "r":
@@ -74,5 +80,4 @@ for line in out:
 
     r = requests.post('http://localhost:8765', data=data)
 
-    print(line)
     print(r.text + "\n")
