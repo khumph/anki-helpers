@@ -28,6 +28,7 @@ out = re.sub(r'\n+', '<br>', input_file)
 out = re.sub(r'\s*(<br>)*\s*;\s*(<br>)*\s*', ';', out)
 out = re.sub(r'(<br>)*---+(<br>)*', '\n', out)
 out = re.sub(r'\\', '\\\\\\\\', out)
+out = re.sub(r'\"', '\\"', out)
 
 out = out.splitlines()
 
